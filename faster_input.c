@@ -1,4 +1,28 @@
 #include <stdio.h>
+// faster output 
+void p(long long n){
+    if(n == 0){
+        putchar_unlocked('0');
+        putchar_unlocked('\n');
+    }
+    else if(n == -1){
+        putchar_unlocked('-');
+        putchar_unlocked('1');
+        putchar_unlocked('\n');
+    }
+    else{
+        char f[11];
+        f[10] = '\n';
+        int i = 9;
+        while(n){
+            f[i--] = n % 10 + '0';
+            n /= 10;
+        }
+        while(f[i] != '\n')
+            putchar_unlocked(f[++i]);
+    }
+}
+// faster input 
 void s(long long *x){
     register char c = getchar_unlocked();
     *x = 0;
